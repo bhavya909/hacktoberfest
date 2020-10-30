@@ -1,0 +1,109 @@
+/**********PALLINDROME CHECK USING STACK***********/
+/***********AUTHOR:AANCHAL GUPTA************/
+/*****************************/
+#include<stdio.h>
+struct Stack
+{
+    char item[10];
+    int Top;
+};
+/*****************************/
+struct  Stack S;
+/*****************************/
+void initialise(void)
+{
+  S.Top=-1;
+}
+/*****************************/
+void push(char x)
+{
+    S.Top++;
+    S.item[S.Top]=x;
+
+}
+/*****************************/
+char pop( )
+{
+    if (S.Top==-1)
+    {
+        return 0;
+    }
+    else
+    {
+    char x;
+    x=S.item[S.Top];
+    S.Top--;
+    return x;
+    }
+}
+/*****************************/
+char StackTop(void)
+{
+    char m;
+    m=S.item[S.Top];
+    return m;
+}
+/*****************************/
+void palindrome(char str[])
+{
+    S.Top=-1;
+    int i=0,j=0,k=0;
+    while (str[i]!='\0')
+    {
+        push(str[i]);
+        i++;
+    }
+    while (S.Top!=-1)
+    {
+        if(str[j]==StackTop())
+        {
+            pop();
+
+            j++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    if (S.Top==-1)
+    {
+        printf("pallindrome");
+    }
+    else
+    {
+        printf("Not Pallindrome");
+    }
+    printf("\n");
+
+}
+/*****************************/
+int main()
+{
+    char str1[]="aanchal";
+    char str2[]="madam";
+    char str3[]="mom";
+    char str4[]="civic";
+    char str5[]="civics";
+    char str6[]="racecar";
+
+    palindrome(str1);
+    palindrome(str2);
+    palindrome(str3);
+    palindrome(str4);
+    palindrome(str5);
+    palindrome(str6);
+
+}
+/*****************************/
+/*****************************
+OUTPUT:
+Not palindrome
+palindrome
+palindrome
+palindrome
+Not palindrome
+palindrome
+
+
+/*****************************/
